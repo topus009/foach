@@ -16,9 +16,11 @@ const Header = ({ user }) => {
   const classes = useStyles();
   return (
     <AppBar position="static" className={classes.root}>
-      <Typography variant="h6" className={classes.user}>
-        {user.UserName}
-      </Typography>
+      {user && (
+        <Typography variant="h6" className={classes.user}>
+          {user.UserName}
+        </Typography>
+      )}
     </AppBar>
   );
 };
