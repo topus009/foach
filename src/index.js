@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './js/containers/App';
 import * as serviceWorker from './serviceWorker';
-import './index.sass';
 
 ReactDOM.render(<App />, document.getElementById('root'));
 

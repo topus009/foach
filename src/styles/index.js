@@ -3,15 +3,15 @@ import { withStyles, createMuiTheme } from '@material-ui/core';
 const colors = {
   white_100: 'white',
   gray_100: '#4a4a4a',
-  gray_300: '#505050',
+  gray_300: '#bababa',
   black_100: 'black',
   black_200: '#171717',
   green_100: '#00be73',
   green_200: 'green',
   violet_100: '#5f19aa',
   red_100: 'red',
-  blue_100: '#004b66',
-  blue_200: '#003f55',
+  blue_100: '#00adeb',
+  blue_200: '#00bdff',
   blue_300: 'lightblue',
 };
 
@@ -30,7 +30,7 @@ export const theme = createMuiTheme({
   },
   palette: {
     colors: {
-      worker_color: colors.white_100,
+      worker_color: colors.black_100,
       worker_hover_bg_color: colors.gray_300,
       worker_checked_bg_color: colors.blue_200,
       worker_checked_hover_bg_color: colors.blue_100,

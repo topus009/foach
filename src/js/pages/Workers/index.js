@@ -1,9 +1,12 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { bool, func, number, objectOf, shape, string } from 'prop-types';
 import { connect } from 'react-redux';
-import { getWorkers, toggleVacationCompleted } from '../redux/actions/AppActions';
-import Worker from '../components/Worker';
-import { convertArrayToString } from '../helpers/common';
+import cn from 'classnames';
+import { getWorkers, toggleVacationCompleted } from '../../redux/actions/AppActions';
+import Worker from '../../components/Worker';
+import { convertArrayToString } from '../../helpers/common';
+import { useWorkersStyles } from './styles';
+import { useCommonStyles } from '../../../styles/common';
 
 const propTypes = {
   workers: objectOf(
@@ -75,10 +78,13 @@ const Workers = ({ workers, loading, getWorkers, toggleVacationCompleted }) => {
     toggleVacationCompleted(convertArrayToString(selectedItems));
   };
 
+  const classes = useWorkersStyles();
+  const commonClasses = useCommonStyles();
+
   return (
     <>
       {!loading && workersIds.length ? (
-        <table className="workers container">
+        <table className={cn(classes.workers, commonClasses.container)}>
           <thead>
             <tr>
               <th>
@@ -86,10 +92,15 @@ const Workers = ({ workers, loading, getWorkers, toggleVacationCompleted }) => {
               </th>
               <th>ID</th>
               <th>Работники</th>
-              <th className="worker_header_status">
+              <th className={classes.worker_header_status}>
                 <span>В отпуске</span>
                 {selectedItems.length ? (
-                  <button type="button" onClick={handleToggleSelectedWorkerCompleted} disabled={!selectedItems.length}>
+                  <button
+                    type="button"
+                    className={classes.worker_header_status_btn}
+                    onClick={handleToggleSelectedWorkerCompleted}
+                    disabled={!selectedItems.length}
+                  >
                     Изменить
                   </button>
                 ) : null}
