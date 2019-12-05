@@ -1,0 +1,28 @@
+.workers
+  +themify($themes)
+    border-collapse: separate
+    border-spacing: 10px 0
+    color: themed('worker_color')
+    .worker
+      &.checked
+        background-color: themed('worker_checked_bg_color')
+      &:hover
+        background-color: themed('worker_hover_bg_color')
+        &.checked
+          background-color: themed('worker_checked_hover_bg_color')
+      &_status
+        cursor: pointer
+        color: themed('worker_status_color')
+        &.completed
+          color: themed('worker_status_completed_color')
+      &_header
+        &_status
+          display: flex
+          button
+            margin-left: 10px
+            line-height: 14px
+            border: none
+            color: themed('workers_header_status_btn_color')
+            background-color: themed('workers_header_status_btn_bg_color')
+            padding: 0 2px
+            cursor: pointer
