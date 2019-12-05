@@ -1,5 +1,6 @@
 import React from 'react';
 import cn from 'classnames';
+import Typography from '@material-ui/core/Typography';
 import { bool, func, number, shape, string } from 'prop-types';
 
 import { useWorkerStyles } from './styles';
@@ -30,10 +31,14 @@ const Worker = props => {
       <td>
         <input type="checkbox" onChange={() => onSelect(ID)} checked={checked} />
       </td>
-      <td>{ID}</td>
-      <td>{Title}</td>
+      <td>
+        <Typography>{ID}</Typography>
+      </td>
+      <td>
+        <Typography>{Title}</Typography>
+      </td>
       <td className={composedCompletedStyles} onClick={() => toggleCompleted([ID])}>
-        {completedText}
+        <Typography>{completedText}</Typography>
       </td>
     </tr>
   );

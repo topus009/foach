@@ -9,7 +9,7 @@ export const useWorkersStyles = makeStyles(theme => ({
   workers_header_status: {
     display: 'flex',
   },
-  worker_header_status_btn: {
+  workers_header_status_btn: {
     marginLeft: '10px',
     lineHeight: '14px',
     border: 'none',

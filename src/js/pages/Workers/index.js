@@ -2,6 +2,8 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { bool, func, number, objectOf, shape, string } from 'prop-types';
 import { connect } from 'react-redux';
 import cn from 'classnames';
+import Typography from '@material-ui/core/Typography';
+
 import { getWorkers, toggleVacationCompleted } from '../../redux/actions/AppActions';
 import Worker from '../../components/Worker';
 import { convertArrayToString } from '../../helpers/common';
@@ -90,14 +92,18 @@ const Workers = ({ workers, loading, getWorkers, toggleVacationCompleted }) => {
               <th>
                 <input type="checkbox" onChange={handleSelectAll} checked={selectedAll} />
               </th>
-              <th>ID</th>
-              <th>Работники</th>
-              <th className={classes.worker_header_status}>
-                <span>В отпуске</span>
+              <th>
+                <Typography>ID</Typography>
+              </th>
+              <th>
+                <Typography>Работники</Typography>
+              </th>
+              <th className={classes.workers_header_status}>
+                <Typography>В отпуске</Typography>
                 {selectedItems.length ? (
                   <button
                     type="button"
-                    className={classes.worker_header_status_btn}
+                    className={classes.workers_header_status_btn}
                     onClick={handleToggleSelectedWorkerCompleted}
                     disabled={!selectedItems.length}
                   >
