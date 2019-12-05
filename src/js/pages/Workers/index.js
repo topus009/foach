@@ -6,6 +6,7 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import { getWorkers, toggleVacationCompleted } from '../../redux/actions/AppActions';
 import Worker from '../../components/Worker';
+import CustomCheckbox from '../../components/common/CustomCheckbox';
 import { convertArrayToString } from '../../helpers/common';
 import { useWorkersStyles } from './styles';
 import { useCommonStyles } from '../../../styles/common';
@@ -90,7 +91,7 @@ const Workers = ({ workers, loading, getWorkers, toggleVacationCompleted }) => {
           <thead>
             <tr>
               <th>
-                <input type="checkbox" onChange={handleSelectAll} checked={selectedAll} />
+                <CustomCheckbox onChange={handleSelectAll} checked={selectedAll} />
               </th>
               <th>
                 <Typography>ID</Typography>

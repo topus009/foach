@@ -1,6 +1,7 @@
 import React from 'react';
 import cn from 'classnames';
 import Typography from '@material-ui/core/Typography';
+import CustomCheckbox from '../common/CustomCheckbox';
 import { bool, func, number, shape, string } from 'prop-types';
 
 import { useWorkerStyles } from './styles';
@@ -29,7 +30,7 @@ const Worker = props => {
   return (
     <tr className={composedStyles}>
       <td>
-        <input type="checkbox" onChange={() => onSelect(ID)} checked={checked} />
+        <CustomCheckbox onChange={() => onSelect(ID)} checked={checked} />
       </td>
       <td>
         <Typography>{ID}</Typography>
