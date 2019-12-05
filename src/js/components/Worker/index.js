@@ -1,7 +1,8 @@
-import { bool, func, number, shape, string } from 'prop-types';
-
 import React from 'react';
 import cn from 'classnames';
+import { bool, func, number, shape, string } from 'prop-types';
+
+import { useWorkerStyles } from './styles';
 
 const propTypes = {
   item: shape({
@@ -18,20 +19,20 @@ const Worker = props => {
   const { item, onSelect, checked, toggleCompleted } = props;
   const { Title, ID, Completed } = item;
 
-  const completedClasses = cn('worker_status', {
-    completed: Completed,
-  });
-
   const completedText = Completed ? 'Да' : 'Нет';
 
+  const classes = useWorkerStyles();
+  const composedStyles = cn(classes.worker, checked && classes.checked);
+  const composedCompletedStyles = cn(classes.worker_status, Completed && classes.completed);
+
   return (
-    <tr className={cn('worker', { checked })}>
-      <td className="worker_action">
+    <tr className={composedStyles}>
+      <td>
         <input type="checkbox" onChange={() => onSelect(ID)} checked={checked} />
       </td>
-      <td className="worker_id">{ID}</td>
+      <td>{ID}</td>
       <td>{Title}</td>
-      <td className={completedClasses} onClick={() => toggleCompleted([ID])}>
+      <td className={composedCompletedStyles} onClick={() => toggleCompleted([ID])}>
         {completedText}
       </td>
     </tr>
