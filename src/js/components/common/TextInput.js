@@ -19,7 +19,7 @@ const defaultProps = {
   type: 'text',
   onBlur: () => false,
   variant: '',
-  margin: '',
+  margin: 'none',
 };
 
 const TextInput = ({ value, onBlur, onChange, autoFocus, label, type, variant, margin }) => {

@@ -8,7 +8,7 @@ import { createHashHistory } from 'history';
 import Loader from '../components/common/Loader';
 import Header from '../components/Header';
 import Routes from './routes';
-import GlobalStyle, { theme } from './styles';
+import GlobalStyle, { theme } from '../../styles';
 
 export const history = createHashHistory();
 
