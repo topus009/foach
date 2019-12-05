@@ -1,33 +1,38 @@
 import React from 'react';
 import { string, bool, func } from 'prop-types';
+import TextField from '@material-ui/core/TextField';
 
 const propTypes = {
   value: string.isRequired,
   onBlur: func,
   onChange: func.isRequired,
   autoFocus: bool,
-  placeholder: string,
+  label: string,
   type: string,
+  variant: string,
+  margin: string,
 };
 
 const defaultProps = {
   autoFocus: false,
-  placeholder: '',
+  label: '',
   type: 'text',
   onBlur: () => false,
+  variant: '',
+  margin: '',
 };
 
-const TextInput = ({ value, onBlur, onChange, autoFocus, placeholder, type }) => {
+const TextInput = ({ value, onBlur, onChange, autoFocus, label, type, variant, margin }) => {
   const handleChange = e => onChange(e.target.value);
   return (
-    <input
+    <TextField
       type={type}
-      className="text_input"
       value={value}
       onChange={handleChange}
-      onBlur={onBlur}
       autoFocus={autoFocus}
-      placeholder={placeholder}
+      label={label}
+      variant={variant}
+      margin={margin}
     />
   );
 };

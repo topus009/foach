@@ -3,6 +3,7 @@ import { bool, func } from 'prop-types';
 import { connect } from 'react-redux';
 import { signUp } from '../redux/actions/AuthActions';
 import TextInput from '../components/common/TextInput';
+import Button from '@material-ui/core/Button';
 import Loader from '../components/common/Loader';
 
 const propTypes = {
@@ -26,11 +27,24 @@ const Auth = ({ signUp, loading }) => {
     <>
       {!loading ? (
         <div className="auth">
-          <TextInput value={email} onChange={value => setEmail(value)} placeholder="email" />
-          <TextInput value={password} onChange={value => setPassword(value)} placeholder="password" type="password" />
-          <button type="button" onClick={handleSubmit} disabled={isBtnDisabled()}>
+          <TextInput
+            value={email}
+            onChange={value => setEmail(value)}
+            label="Email"
+            variant="outlined"
+            margin="normal"
+          />
+          <TextInput
+            value={password}
+            onChange={value => setPassword(value)}
+            label="Password"
+            type="password"
+            variant="outlined"
+            margin="normal"
+          />
+          <Button variant="contained" color="primary" onClick={handleSubmit} disabled={isBtnDisabled()}>
             Зарегистрироваться
-          </button>
+          </Button>
         </div>
       ) : (
         <Loader />
