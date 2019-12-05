@@ -3,7 +3,7 @@ import { bool, func, number, objectOf, shape, string } from 'prop-types';
 import { connect } from 'react-redux';
 import cn from 'classnames';
 import Typography from '@material-ui/core/Typography';
-
+import Button from '@material-ui/core/Button';
 import { getWorkers, toggleVacationCompleted } from '../../redux/actions/AppActions';
 import Worker from '../../components/Worker';
 import { convertArrayToString } from '../../helpers/common';
@@ -101,14 +101,13 @@ const Workers = ({ workers, loading, getWorkers, toggleVacationCompleted }) => {
               <th className={classes.workers_header_status}>
                 <Typography>В отпуске</Typography>
                 {selectedItems.length ? (
-                  <button
-                    type="button"
+                  <Button
                     className={classes.workers_header_status_btn}
                     onClick={handleToggleSelectedWorkerCompleted}
                     disabled={!selectedItems.length}
                   >
                     Изменить
-                  </button>
+                  </Button>
                 ) : null}
               </th>
             </tr>

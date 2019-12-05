@@ -12,10 +12,9 @@ export const useWorkersStyles = makeStyles(theme => ({
   workers_header_status_btn: {
     marginLeft: '10px',
     lineHeight: '14px',
-    border: 'none',
     color: theme.palette.colors.workers_header_status_btn_color,
     backgroundColor: theme.palette.colors.workers_header_status_btn_bg_color,
     padding: '0 2px',
-    cursor: 'pointer',
+    textTransform: 'none',
   },
 }));
