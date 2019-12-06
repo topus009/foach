@@ -29,9 +29,9 @@ const Auth = ({ signUp }) => {
   const isBtnDisabled = () =>
     !Object.values(fields)
       .join('')
-      .trim().length || Object.values(errors).some(bool => !bool);
+      .trim().length || Object.values(errors).some(bool => bool);
 
-  const handleValidateField = (field, value) => setErrors({ ...errors, [field]: validateRules[field](value) });
+  const handleValidateField = (field, value) => setErrors({ ...errors, [field]: !validateRules[field](value) });
 
   const handleChangeField = (field, value) => {
     handleValidateField(field, value);
@@ -46,6 +46,7 @@ const Auth = ({ signUp }) => {
         label="Email"
         variant="outlined"
         margin="normal"
+        helperText="invalid email"
         error={errors.email}
       />
       <TextInput
@@ -54,6 +55,7 @@ const Auth = ({ signUp }) => {
         label="Пароль"
         type="password"
         variant="outlined"
+        helperText="min 8 symbols"
         error={errors.password}
       />
       <Button variant="contained" color="primary" onClick={handleSubmit} disabled={isBtnDisabled()}>

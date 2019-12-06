@@ -11,6 +11,8 @@ const propTypes = {
   type: string,
   variant: string,
   margin: string,
+  helperText: string,
+  error: bool,
 };
 
 const defaultProps = {
@@ -20,21 +22,13 @@ const defaultProps = {
   onBlur: () => false,
   variant: '',
   margin: 'none',
+  helperText: '',
+  error: false,
 };
 
-const TextInput = ({ value, onBlur, onChange, autoFocus, label, type, variant, margin }) => {
+const TextInput = ({ onChange, helperText, ...restProps }) => {
   const handleChange = e => onChange(e.target.value);
-  return (
-    <TextField
-      type={type}
-      value={value}
-      onChange={handleChange}
-      autoFocus={autoFocus}
-      label={label}
-      variant={variant}
-      margin={margin}
-    />
-  );
+  return <TextField {...restProps} onChange={handleChange} helperText={restProps.error ? helperText : <span />} />;
 };
 
 TextInput.propTypes = propTypes;
