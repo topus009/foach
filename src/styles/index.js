@@ -18,10 +18,15 @@ const colors = {
 export const theme = createMuiTheme({
   overrides: {
     MuiOutlinedInput: {
-      root: {},
       input: {
-        padding: '10px',
+        padding: '5px',
         height: '1rem',
+        margin: '5px 0 !important',
+      },
+    },
+    MuiInputLabel: {
+      outlined: {
+        transform: 'translate(13px, 13px) scale(1)',
       },
     },
   },
