@@ -1,0 +1,26 @@
+{
+  "files": {
+    "static/js/0.07451557.chunk.js": "/foach/static/js/0.07451557.chunk.js",
+    "static/js/0.07451557.chunk.js.map": "/foach/static/js/0.07451557.chunk.js.map",
+    "main.js": "/foach/static/js/main.b6cce406.chunk.js",
+    "main.js.map": "/foach/static/js/main.b6cce406.chunk.js.map",
+    "runtime-main.js": "/foach/static/js/runtime-main.1e0f5f62.js",
+    "runtime-main.js.map": "/foach/static/js/runtime-main.1e0f5f62.js.map",
+    "static/js/3.2d20087c.chunk.js": "/foach/static/js/3.2d20087c.chunk.js",
+    "static/js/3.2d20087c.chunk.js.map": "/foach/static/js/3.2d20087c.chunk.js.map",
+    "static/js/4.b65fbbb4.chunk.js": "/foach/static/js/4.b65fbbb4.chunk.js",
+    "static/js/4.b65fbbb4.chunk.js.map": "/foach/static/js/4.b65fbbb4.chunk.js.map",
+    "static/js/5.5dc563df.chunk.js": "/foach/static/js/5.5dc563df.chunk.js",
+    "static/js/5.5dc563df.chunk.js.map": "/foach/static/js/5.5dc563df.chunk.js.map",
+    "static/js/6.6171c61c.chunk.js": "/foach/static/js/6.6171c61c.chunk.js",
+    "static/js/6.6171c61c.chunk.js.map": "/foach/static/js/6.6171c61c.chunk.js.map",
+    "index.html": "/foach/index.html",
+    "precache-manifest.06cf36d0dd5eb670282a4b51c4afcdc4.js": "/foach/precache-manifest.06cf36d0dd5eb670282a4b51c4afcdc4.js",
+    "service-worker.js": "/foach/service-worker.js"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.1e0f5f62.js",
+    "static/js/3.2d20087c.chunk.js",
+    "static/js/main.b6cce406.chunk.js"
+  ]
+}
