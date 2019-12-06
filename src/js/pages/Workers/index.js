@@ -1,7 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { bool, func, number, objectOf, shape, string } from 'prop-types';
 import { connect } from 'react-redux';
-import cn from 'classnames';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import { getWorkers, toggleVacationCompleted } from '../../redux/actions/AppActions';
@@ -85,9 +84,9 @@ const Workers = ({ workers, loading, getWorkers, toggleVacationCompleted }) => {
   const commonClasses = useCommonStyles();
 
   return (
-    <>
+    <div className={commonClasses.container}>
       {!loading && workersIds.length ? (
-        <table className={cn(classes.workers, commonClasses.container)}>
+        <table className={classes.workers}>
           <thead>
             <tr>
               <th>
@@ -129,7 +128,7 @@ const Workers = ({ workers, loading, getWorkers, toggleVacationCompleted }) => {
           </tbody>
         </table>
       ) : null}
-    </>
+    </div>
   );
 };
 

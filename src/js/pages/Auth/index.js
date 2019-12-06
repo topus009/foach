@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import cn from 'classnames';
 import { func } from 'prop-types';
 import { connect } from 'react-redux';
 import { signUp } from '../../redux/actions/AuthActions';
@@ -7,6 +8,7 @@ import CustomSelect from '../../components/common/CustomSelect';
 import FormControl from '@material-ui/core/FormControl';
 import Button from '@material-ui/core/Button';
 import { useAuthStyles } from './styles';
+import { useCommonStyles } from '../../../styles/common';
 
 const propTypes = {
   signUp: func.isRequired,
@@ -33,6 +35,8 @@ const Auth = ({ signUp }) => {
   const [errors, setErrors] = useState({});
 
   const classes = useAuthStyles();
+  const commonClasses = useCommonStyles();
+  const composedwrapperClasses = cn(classes.auth, commonClasses.container);
 
   const handleSubmit = () => signUp(fields);
 
@@ -55,7 +59,7 @@ const Auth = ({ signUp }) => {
   };
 
   return (
-    <div className={classes.auth}>
+    <div className={composedwrapperClasses}>
       <FormControl className={classes.form}>
         <CustomTextInput
           value={fields.email || ''}
