@@ -10,32 +10,51 @@ const propTypes = {
   signUp: func.isRequired,
 };
 
+const validateRules = {
+  email: value => {
+    const regex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return regex.test(value.trim());
+  },
+  password: value => value.trim().length > 7,
+};
+
 const Auth = ({ signUp }) => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [fields, setFields] = useState({});
+  const [errors, setErrors] = useState({});
 
   const classes = useAuthStyles();
 
-  const handleSubmit = () => signUp({ email, password });
+  const handleSubmit = () => signUp(fields);
 
-  const isBtnDisabled = () => !email.trim().length || !password.trim().length;
+  const isBtnDisabled = () =>
+    !Object.values(fields)
+      .join('')
+      .trim().length || Object.values(errors).some(bool => !bool);
+
+  const handleValidateField = (field, value) => setErrors({ ...errors, [field]: validateRules[field](value) });
+
+  const handleChangeField = (field, value) => {
+    handleValidateField(field, value);
+    setFields({ ...fields, [field]: value });
+  };
 
   return (
     <div className={classes.auth}>
       <TextInput
-        value={email}
-        onChange={value => setEmail(value)}
+        value={fields.email || ''}
+        onChange={value => handleChangeField('email', value)}
         label="Email"
         variant="outlined"
         margin="normal"
-        type="email"
+        error={errors.email}
       />
       <TextInput
-        value={password}
-        onChange={value => setPassword(value)}
-        label="Password"
+        value={fields.password || ''}
+        onChange={value => handleChangeField('password', value)}
+        label="Пароль"
         type="password"
         variant="outlined"
+        error={errors.password}
       />
       <Button variant="contained" color="primary" onClick={handleSubmit} disabled={isBtnDisabled()}>
         Зарегистрироваться
