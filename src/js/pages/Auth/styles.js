@@ -20,4 +20,7 @@ export const useAuthStyles = makeStyles({
       cursor: 'pointer',
     },
   },
+  form: {
+    maxWidth: '180px',
+  },
 });

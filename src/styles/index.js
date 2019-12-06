@@ -29,6 +29,11 @@ export const theme = createMuiTheme({
         transform: 'translate(13px, 13px) scale(1)',
       },
     },
+    MuiFormControl: {
+      root: {
+        marginBottom: '10px',
+      },
+    },
   },
   typography: {
     fontSize: 12,

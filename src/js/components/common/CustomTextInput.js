@@ -26,12 +26,12 @@ const defaultProps = {
   error: false,
 };
 
-const TextInput = ({ onChange, helperText, ...restProps }) => {
+const CustomTextInput = ({ onChange, helperText, ...restProps }) => {
   const handleChange = e => onChange(e.target.value);
   return <TextField {...restProps} onChange={handleChange} helperText={restProps.error ? helperText : <span />} />;
 };
 
-TextInput.propTypes = propTypes;
-TextInput.defaultProps = defaultProps;
+CustomTextInput.propTypes = propTypes;
+CustomTextInput.defaultProps = defaultProps;
 
-export default TextInput;
+export default CustomTextInput;

@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import { func } from 'prop-types';
 import { connect } from 'react-redux';
 import { signUp } from '../../redux/actions/AuthActions';
-import TextInput from '../../components/common/TextInput';
+import CustomTextInput from '../../components/common/CustomTextInput';
+import CustomSelect from '../../components/common/CustomSelect';
+import FormControl from '@material-ui/core/FormControl';
 import Button from '@material-ui/core/Button';
 import { useAuthStyles } from './styles';
 
@@ -18,8 +20,16 @@ const validateRules = {
   password: value => value.trim().length > 7,
 };
 
+const selectOptions = [
+  {
+    value: 'true',
+    label: 'Принять Тополова С. на работу',
+  },
+];
+
 const Auth = ({ signUp }) => {
   const [fields, setFields] = useState({});
+  const [selected, setSelected] = useState('');
   const [errors, setErrors] = useState({});
 
   const classes = useAuthStyles();
@@ -29,35 +39,48 @@ const Auth = ({ signUp }) => {
   const isBtnDisabled = () =>
     !Object.values(fields)
       .join('')
-      .trim().length || Object.values(errors).some(bool => bool);
+      .trim().length ||
+    Object.values(errors).some(bool => bool) ||
+    !selected;
 
   const handleValidateField = (field, value) => setErrors({ ...errors, [field]: !validateRules[field](value) });
 
   const handleChangeField = (field, value) => {
-    handleValidateField(field, value);
-    setFields({ ...fields, [field]: value });
+    if (field === 'selectField') {
+      setSelected(value);
+    } else {
+      setFields({ ...fields, [field]: value });
+      handleValidateField(field, value);
+    }
   };
 
   return (
     <div className={classes.auth}>
-      <TextInput
-        value={fields.email || ''}
-        onChange={value => handleChangeField('email', value)}
-        label="Email"
-        variant="outlined"
-        margin="normal"
-        helperText="invalid email"
-        error={errors.email}
-      />
-      <TextInput
-        value={fields.password || ''}
-        onChange={value => handleChangeField('password', value)}
-        label="Пароль"
-        type="password"
-        variant="outlined"
-        helperText="min 8 symbols"
-        error={errors.password}
-      />
+      <FormControl className={classes.form}>
+        <CustomTextInput
+          value={fields.email || ''}
+          onChange={value => handleChangeField('email', value)}
+          label="Email"
+          variant="outlined"
+          helperText="invalid email"
+          error={errors.email}
+        />
+        <CustomTextInput
+          value={fields.password || ''}
+          onChange={value => handleChangeField('password', value)}
+          label="Пароль"
+          type="password"
+          variant="outlined"
+          helperText="min 8 symbols"
+          error={errors.password}
+        />
+        <CustomSelect
+          value={selected}
+          onChange={value => handleChangeField('selectField', value)}
+          variant="outlined"
+          options={selectOptions}
+        />
+      </FormControl>
       <Button variant="contained" color="primary" onClick={handleSubmit} disabled={isBtnDisabled()}>
         Зарегистрироваться
       </Button>
